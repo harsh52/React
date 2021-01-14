@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\seasons",
-    "\\seasons\\src"
+    "\\pics",
+    "\\pics\\src",
+    "\\pics\\src\\components"
   ],
-  "SelectedNode": "\\seasons\\src\\SeasonDisplay.js",
+  "SelectedNode": "\\pics\\src\\components\\App.js",
   "PreviewInSolutionExplorer": false
 }

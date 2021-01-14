@@ -5,6 +5,7 @@ class SearchBar extends React.Component {
 	state = {term : ''}
 
 	//This is prevent the app to automatically submit the form.
+	// And we are using "= (event) =>" to avoid Cannot read property 'state' of undefined
 	onFormSubmit = (event) => {
 		event.preventDefault();
 		//console.log(this.state.term);
