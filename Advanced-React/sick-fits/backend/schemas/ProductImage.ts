@@ -6,7 +6,7 @@ import { cloudinaryImage } from "@keystone-next/cloudinary";
 export const cloudinary = {
     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
     apiKey: process.env.CLOUDINARY_KEY,
-    apiSecret: process.env.CLOUDINARY_CLOUD_NAME,
+    apiSecret: process.env.CLOUDINARY_SECRET,
     folder: 'sockfits',
 };
 
