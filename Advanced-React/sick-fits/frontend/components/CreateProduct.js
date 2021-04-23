@@ -3,6 +3,8 @@ import useForm from '../lib/useForm';
 import Form from './styles/Form'
 import gql from 'graphql-tag'
 import DisplayError from './ErrorMessage';
+import { ALL_PRODUCT_QUERY } from './Products';
+import Router from 'next/router';
 
 
 const CREATE_PRODUCT_MUTATION = gql`
@@ -42,6 +44,7 @@ export default function CreateProduct(){
         CREATE_PRODUCT_MUTATION,
         {
             variables: inputs,
+            refetchQueries:[{query: ALL_PRODUCT_QUERY}],
         }
     )
      //console.log(createProduct);
@@ -50,8 +53,12 @@ export default function CreateProduct(){
             e.preventDefault();
             //console.log(inputs);
             // Submit the input filed to the backend:
-            await createProduct();
+            const res = await createProduct();
             clearForm()
+            // Go to that product page!
+            Router.push({
+                pathname:`/product/${res.data.createProduct.id}`,
+            })
         }}
         >
             <DisplayError error={error} />
