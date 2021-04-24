@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import SignOut from './SignOut';
 import NavStyles from './styles/NavStyles'
 import { useUser } from './User';
 
@@ -14,6 +15,7 @@ export default function Nav() {
                 <Link href="/sell"> Sell </Link>
                 <Link href="/orders"> Order </Link>
                 <Link href="/account"> Account </Link>
+                <SignOut/>
                 </>
             )}
             {!user && (
