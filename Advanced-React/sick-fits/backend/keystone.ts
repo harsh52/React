@@ -8,6 +8,7 @@ import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
+import { extendGraphqlSchema } from './mutations';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/sick-fits-keystone'
 
@@ -58,9 +59,9 @@ export default withAuth(config({
         ProductImage,
         CartItem
     }),
+    extendGraphqlSchema,
     ui:{
         //Show the Ui for for the people who pass the test.
-
         isAccessAllowed: ({session}) => {
             console.log(session);
             return !!session?.data;

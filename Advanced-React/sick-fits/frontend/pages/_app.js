@@ -4,6 +4,7 @@ import NProgress from 'nprogress';
 import '../components/styles/nprogress.css';
 import { ApolloProvider } from "@apollo/client";import { Component } from "react";
 import withData from "../lib/withData";
+import { CartStateProvider } from '../lib/cartState';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -13,9 +14,11 @@ function MyApp({Component, pageProps,apollo}){
     console.log(apollo)
     return(
         <ApolloProvider client={apollo}>
-            <Page>
-                <Component {...pageProps} />
-            </Page>
+            <CartStateProvider>
+                <Page>
+                    <Component {...pageProps} />
+                </Page>
+            </CartStateProvider>
         </ApolloProvider>
     );
 }
