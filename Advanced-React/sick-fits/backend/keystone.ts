@@ -11,6 +11,8 @@ import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
+import { Role } from './schemas/Role';
+import { permissionsList } from './schemas/fields';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/sick-fits-keystone'
 
@@ -62,6 +64,7 @@ export default withAuth(config({
         CartItem,
         OrderItem,
         Order,
+        Role
     }),
     extendGraphqlSchema,
     ui:{
@@ -72,7 +75,8 @@ export default withAuth(config({
         }
     },
     session: withItemData(statelessSessions(sessionConfig), {
-        User: `id`
+        //GraphQL Query
+        User: `id name email role { ${permissionsList.join(' ')} }`,
     }),
 })
 );
